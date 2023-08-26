@@ -1,5 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import SummaryForm from "../SumaryForm";
+
 
 describe("checkbox functionality test", () => {
   test("checkbox is unchekd by default", () => {

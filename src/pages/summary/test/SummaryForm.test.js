@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import SummaryForm from "../SumaryForm";
-
+import UserEvent from "@testing-library/user-event";
 
 describe("checkbox functionality test", () => {
   test("checkbox is unchekd by default", () => {
@@ -13,7 +13,8 @@ describe("checkbox functionality test", () => {
     expect(checkbox).not.toBeChecked();
   });
 
-  test("when checked button is enabbled else disabled", () => {
+  test("when checked button is enabbled else disabled", async () => {
+    const user = await UserEvent.setup();
     render(<SummaryForm />);
     const checkbox = screen.getByRole("checkbox", {
       name: /Terms and Conditions/i,
@@ -27,12 +28,12 @@ describe("checkbox functionality test", () => {
     expect(confrmButton).toBeDisabled();
 
     //checkbox is checked
-    fireEvent.click(checkbox);
+    await user.click(checkbox);
 
     expect(confrmButton).toBeEnabled();
 
     //cehckbox is nunchecked;
-    fireEvent.click(checkbox);
+    await user.click(checkbox);
 
     expect(confrmButton).toBeDisabled();
   });

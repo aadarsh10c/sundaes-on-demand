@@ -14,7 +14,7 @@ describe("checkbox functionality test", () => {
   });
 
   test("when checked button is enabbled else disabled", async () => {
-    const user = await UserEvent.setup();
+    const user = UserEvent.setup();
     render(<SummaryForm />);
     const checkbox = screen.getByRole("checkbox", {
       name: /Terms and Conditions/i,
@@ -38,3 +38,14 @@ describe("checkbox functionality test", () => {
     expect(confrmButton).toBeDisabled();
   });
 });
+
+// test.only("Popover functionality check",async () => {
+//     const user = await UserEvent.setup()
+//     render(<SummaryForm/>)
+
+//     //popover is not present
+
+//     //on mouseover popver is present
+
+//     //popoever is hoden afer mouseover
+// })
